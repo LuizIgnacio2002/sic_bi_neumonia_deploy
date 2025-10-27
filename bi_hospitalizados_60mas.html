@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitalizados 60 años o más - SIC Neumonía</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #E3F2FD 0%, #B3E5FC 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 161, 228, 0.2);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            color: #01579B;
+            font-size: 1.8em;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #00B0FF 0%, #0277BD 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #0277BD 0%, #01579B 100%);
+        }
+
+        .dashboard-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 161, 228, 0.2);
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            iframe {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hospitalizados 60 años o más</h1>
+            <a href="index.html" class="back-button">Volver al Inicio</a>
+        </header>
+
+        <div class="dashboard-container">
+            <iframe title="test_all_sic" src="https://app.powerbi.com/view?r=eyJrIjoiMjM4ZTRhOTctMmRlNS00M2MxLWE0YzEtN2JlM2I0MjhlZDIxIiwidCI6IjM3ZTBiMDVkLTQxZGEtNDE3Mi05YzVmLWIwZmM1ZTE1NjY3ZSIsImMiOjR9&pageName=e2731cef3b4da1890730" allowFullScreen="true"></iframe>
+        </div>
+    </div>
+</body>
+</html>

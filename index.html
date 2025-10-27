@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observatorio de Datos de Neumonía - Vigilancia Epidemiológica</title>
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #E3F2FD 0%, #B3E5FC 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #01579B;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #0277BD;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 161, 228, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: block;
+            border: 3px solid #81D4FA;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 161, 228, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card h2 {
+            color: #0277BD;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .card p {
+            color: #546E7A;
+            line-height: 1.6;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .card-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00B0FF 0%, #0277BD 100%);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .card-button:hover {
+            background: linear-gradient(135deg, #0277BD 0%, #01579B 100%);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #0277BD;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Observatorio de Datos de Neumonía</h1>
+            <p class="subtitle">Vigilancia Epidemiológica y Análisis de Datos en Tiempo Real</p>
+        </header>
+
+        <div class="cards-container">
+            <a href="bi_hospitalizacion_men5.html" class="card">
+                <div class="card-icon"></div>
+                <h2>Hospitalizaciones Pediátricas (niños menores de 5 años)</h2>
+                <p>Monitoreo de ingresos hospitalarios por neumonía en menores de cinco años. Incluye series temporales, tasas de incidencia, distribución territorial y análisis de patrones estacionales.</p>
+                <span class="card-button">Ver Dashboard</span>
+            </a>
+
+            <a href="bi_hospitalizados_60mas.html" class="card">
+                <div class="card-icon"></div>
+                <h2>Hospitalizaciones Adulto Mayor (mayores de 60 años)</h2>
+                <p>Vigilancia de casos hospitalizados en población geriátrica. Indicadores clave de morbilidad, tendencias cronológicas, análisis geoespacial y factores de riesgo asociados.</p>
+                <span class="card-button">Ver Dashboard</span>
+            </a>
+
+            <a href="bi_neumonia_men5.html" class="card">
+                <div class="card-icon"></div>
+                <h2>Incidencia Pediátrica (niños menores de 5 años)</h2>
+                <p>Registro epidemiológico de casos confirmados de neumonía en primera infancia. Análisis de prevalencia, curvas epidémicas, estratificación por edad y caracterización clínica.</p>
+                <span class="card-button">Ver Dashboard</span>
+            </a>
+
+            <a href="bi_neumonia_60mas.html" class="card">
+                <div class="card-icon"></div>
+                <h2>Incidencia Adulto Mayor (mayores de 60 años)</h2>
+                <p>Sistema de vigilancia de casos registrados en población de alto riesgo. Incluye tasas de ataque, análisis de comorbilidades, distribución geográfica y seguimiento de brotes.</p>
+                <span class="card-button">Ver Dashboard</span>
+            </a>
+
+            <a href="bi_defunciones_men5.html" class="card">
+                <div class="card-icon"></div>
+                <h2>Mortalidad Pediátrica (niños menores de 5 años)</h2>
+                <p>Observatorio de mortalidad infantil por neumonía. Análisis de letalidad, tasas específicas de mortalidad, causas básicas de muerte y determinantes sociales de la salud.</p>
+                <span class="card-button">Ver Dashboard</span>
+            </a>
+
+            <a href="bi_defunciones_60mas.html" class="card">
+                <div class="card-icon"></div>
+                <h2>Mortalidad Adulto Mayor (mayores de 60 años)</h2>
+                <p>Vigilancia de defunciones en población geriátrica. Incluye razones de mortalidad estandarizadas, análisis de exceso de mortalidad, años de vida potencialmente perdidos y factores pronósticos.</p>
+                <span class="card-button">Ver Dashboard</span>
+            </a>
+        </div>
+
+        <footer>
+            <p>Observatorio de Datos de Neumonía - Sistema de Vigilancia Epidemiológica | Datos actualizados en tiempo real</p>
+        </footer>
+    </div>
+</body>
+</html>
