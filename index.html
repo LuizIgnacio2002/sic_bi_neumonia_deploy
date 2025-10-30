@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Observatorio de Datos de Neumonía - Vigilancia Epidemiológica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { 
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -19,14 +20,14 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 50px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
         }
 
         h1 {
@@ -42,72 +43,161 @@
             margin-top: 10px;
         }
 
-        .cards-container {
+        /* Stats Cards en la cabecera */
+        .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0, 161, 228, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 161, 228, 0.25);
+        }
+
+        .stat-card.hospitalizacion-menor {
+            border-left-color: #FF6B6B;
+        }
+
+        .stat-card.hospitalizacion-mayor {
+            border-left-color: #FF8E53;
+        }
+
+        .stat-card.neumonia-menor {
+            border-left-color: #4ECDC4;
+        }
+
+        .stat-card.neumonia-mayor {
+            border-left-color: #45B7D1;
+        }
+
+        .stat-card.defuncion-menor {
+            border-left-color: #A8E6CF;
+        }
+
+        .stat-card.defuncion-mayor {
+            border-left-color: #95E1D3;
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .stat-card.hospitalizacion-menor .stat-icon {
+            color: #FF6B6B;
+        }
+
+        .stat-card.hospitalizacion-mayor .stat-icon {
+            color: #FF8E53;
+        }
+
+        .stat-card.neumonia-menor .stat-icon {
+            color: #4ECDC4;
+        }
+
+        .stat-card.neumonia-mayor .stat-icon {
+            color: #45B7D1;
+        }
+
+        .stat-card.defuncion-menor .stat-icon {
+            color: #A8E6CF;
+        }
+
+        .stat-card.defuncion-mayor .stat-icon {
+            color: #95E1D3;
+        }
+
+        .stat-title {
+            color: #0277BD;
+            font-size: 0.95em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .stat-description {
+            color: #546E7A;
+            font-size: 0.75em;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Dashboard en tiempo real */
+        .dashboard-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 161, 228, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .dashboard-title {
+            color: #01579B;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #81D4FA;
+        }
+
+        .dashboard-title i {
+            margin-right: 10px;
+            color: #00B0FF;
+        }
+
+        .dashboard-content {
+            min-height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 10px;
             padding: 20px;
         }
 
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 161, 228, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            display: block;
-            border: 3px solid #81D4FA;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 161, 228, 0.3);
-        }
-
-        .card-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .card h2 {
-            color: #0277BD;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .card p {
-            color: #546E7A;
-            line-height: 1.6;
-            text-align: center;
-            font-size: 1.1em;
-        }
-
-        .card-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #00B0FF 0%, #0277BD 100%);
-            color: white;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+        .dashboard-iframe {
             width: 100%;
-            text-align: center;
-        }
-
-        .card-button:hover {
-            background: linear-gradient(135deg, #0277BD 0%, #01579B 100%);
+            height: 600px;
+            border: none;
+            border-radius: 10px;
         }
 
         footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 40px;
             padding: 20px;
             color: #0277BD;
+        }
+
+        @media (max-width: 1400px) {
+            .stats-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -115,12 +205,28 @@
                 font-size: 2em;
             }
 
-            .cards-container {
+            .stats-container {
                 grid-template-columns: 1fr;
             }
 
-            .card {
-                padding: 30px;
+            .stat-card {
+                padding: 20px;
+            }
+
+            .stat-title {
+                font-size: 1.1em;
+            }
+
+            .stat-description {
+                font-size: 0.9em;
+            }
+
+            .dashboard-content {
+                min-height: 400px;
+            }
+
+            .dashboard-iframe {
+                height: 400px;
             }
         }
     </style>
@@ -132,48 +238,75 @@
             <p class="subtitle">Vigilancia Epidemiológica y Análisis de Datos en Tiempo Real</p>
         </header>
 
-        <div class="cards-container">
-            <a href="bi_hospitalizacion_men5.html" class="card">
-                <div class="card-icon"></div>
-                <h2>Hospitalizaciones Pediátricas (niños menores de 5 años)</h2>
-                <p>Monitoreo de ingresos hospitalarios por neumonía en menores de cinco años. Incluye series temporales, tasas de incidencia, distribución territorial y análisis de patrones estacionales.</p>
-                <span class="card-button">Ver Dashboard</span>
+        <!-- Tarjetas de estadísticas en la cabecera -->
+        <div class="stats-container">
+
+                        <a href="bi_neumonia_men5.html" class="stat-card neumonia-menor">
+                <div class="stat-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <div class="stat-title">Incidencia Pediátrica (menores de 5 años)</div>
+                <div class="stat-description">Registro epidemiológico de casos confirmados de neumonía en primera infancia. Análisis de prevalencia, curvas epidémicas, estratificación por edad y caracterización clínica.</div>
             </a>
 
-            <a href="bi_hospitalizados_60mas.html" class="card">
-                <div class="card-icon"></div>
-                <h2>Hospitalizaciones Adulto Mayor (mayores de 60 años)</h2>
-                <p>Vigilancia de casos hospitalizados en población geriátrica. Indicadores clave de morbilidad, tendencias cronológicas, análisis geoespacial y factores de riesgo asociados.</p>
-                <span class="card-button">Ver Dashboard</span>
+            <a href="bi_neumonia_60mas.html" class="stat-card neumonia-mayor">
+                <div class="stat-icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+                <div class="stat-title">Incidencia Adulto Mayor (mayores de 60 años)</div>
+                <div class="stat-description">Sistema de vigilancia de casos registrados en población de alto riesgo. Incluye tasas de ataque, análisis de comorbilidades, distribución geográfica y seguimiento de brotes.</div>
+            </a>
+            
+            <a href="bi_hospitalizacion_men5.html" class="stat-card hospitalizacion-menor">
+                <div class="stat-icon">
+                    <i class="fas fa-hospital-user"></i>
+                </div>
+                <div class="stat-title">Hospitalizaciones Pediátricas (menores de 5 años)</div>
+                <div class="stat-description">Monitoreo de ingresos hospitalarios por neumonía en menores de cinco años. Incluye series temporales, tasas de incidencia, distribución territorial y análisis de patrones estacionales.</div>
             </a>
 
-            <a href="bi_neumonia_men5.html" class="card">
-                <div class="card-icon"></div>
-                <h2>Incidencia Pediátrica (niños menores de 5 años)</h2>
-                <p>Registro epidemiológico de casos confirmados de neumonía en primera infancia. Análisis de prevalencia, curvas epidémicas, estratificación por edad y caracterización clínica.</p>
-                <span class="card-button">Ver Dashboard</span>
+            <a href="bi_hospitalizados_60mas.html" class="stat-card hospitalizacion-mayor">
+                <div class="stat-icon">
+                    <i class="fas fa-procedures"></i>
+                </div>
+                <div class="stat-title">Hospitalizaciones Adulto Mayor (mayores de 60 años)</div>
+                <div class="stat-description">Vigilancia de casos hospitalizados en población geriátrica. Indicadores clave de morbilidad, tendencias cronológicas, análisis geoespacial y factores de riesgo asociados.</div>
             </a>
 
-            <a href="bi_neumonia_60mas.html" class="card">
-                <div class="card-icon"></div>
-                <h2>Incidencia Adulto Mayor (mayores de 60 años)</h2>
-                <p>Sistema de vigilancia de casos registrados en población de alto riesgo. Incluye tasas de ataque, análisis de comorbilidades, distribución geográfica y seguimiento de brotes.</p>
-                <span class="card-button">Ver Dashboard</span>
+
+
+            <a href="bi_defunciones_men5.html" class="stat-card defuncion-menor">
+                <div class="stat-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="stat-title">Mortalidad Pediátrica (menores de 5 años)</div>
+                <div class="stat-description">Observatorio de mortalidad infantil por neumonía. Análisis de letalidad, tasas específicas de mortalidad, causas básicas de muerte y determinantes sociales de la salud.</div>
             </a>
 
-            <a href="bi_defunciones_men5.html" class="card">
-                <div class="card-icon"></div>
-                <h2>Mortalidad Pediátrica (niños menores de 5 años)</h2>
-                <p>Observatorio de mortalidad infantil por neumonía. Análisis de letalidad, tasas específicas de mortalidad, causas básicas de muerte y determinantes sociales de la salud.</p>
-                <span class="card-button">Ver Dashboard</span>
+            <a href="bi_defunciones_60mas.html" class="stat-card defuncion-mayor">
+                <div class="stat-icon">
+                    <i class="fas fa-cross"></i>
+                </div>
+                <div class="stat-title">Mortalidad Adulto Mayor (mayores de 60 años)</div>
+                <div class="stat-description">Vigilancia de defunciones en población geriátrica. Incluye razones de mortalidad estandarizadas, análisis de exceso de mortalidad, años de vida potencialmente perdidos y factores pronósticos.</div>
             </a>
+        </div>
 
-            <a href="bi_defunciones_60mas.html" class="card">
-                <div class="card-icon"></div>
-                <h2>Mortalidad Adulto Mayor (mayores de 60 años)</h2>
-                <p>Vigilancia de defunciones en población geriátrica. Incluye razones de mortalidad estandarizadas, análisis de exceso de mortalidad, años de vida potencialmente perdidos y factores pronósticos.</p>
-                <span class="card-button">Ver Dashboard</span>
-            </a>
+        <!-- Dashboard en tiempo real -->
+        <div class="dashboard-section">
+            <h2 class="dashboard-title">
+                <i class="fas fa-chart-line"></i>
+                Dashboard en Tiempo Real
+            </h2>
+            <div class="dashboard-content">
+                <iframe
+                    class="dashboard-iframe"
+                    title="test_sic"
+                    src="https://app.powerbi.com/view?r=eyJrIjoiYmExNzE5MmEtZTA3ZS00ZTFlLWEwM2ItNTRmMGRkZDQyZGNjIiwidCI6IjM3ZTBiMDVkLTQxZGEtNDE3Mi05YzVmLWIwZmM1ZTE1NjY3ZSIsImMiOjR9"
+                    frameborder="0"
+                    allowFullScreen="true">
+                </iframe>
+            </div>
         </div>
 
         <footer>
